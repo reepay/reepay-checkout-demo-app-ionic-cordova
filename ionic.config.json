@@ -1,0 +1,7 @@
+{
+  "name": "reepay-checkout-ionic-cordova-example",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
