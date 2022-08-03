@@ -1,0 +1,17 @@
+{
+  "name": "cordova-plugin-reepay-checkout",
+  "version": "0.0.1",
+  "description": "",
+  "cordova": {
+    "id": "cordova-plugin-reepay-checkout",
+    "platforms": [
+      "ios"
+    ]
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-ios"
+  ],
+  "author": "Reepay",
+  "license": "ISC"
+}
