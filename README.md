@@ -88,3 +88,9 @@ $ ionic cordova plugin remove cordova-plugin-reepay-checkout
 6. Generate a charge session.
 7. Create Reepay checkout in a webview.
 8. Complete the purchase with a [test card](https://reference.reepay.com/api/#testing) or cancel the checkout.
+
+iOS build example:
+https://user-images.githubusercontent.com/108516218/182845243-5771af47-4823-4b94-bf83-819798085628.MP4
+
+
+
