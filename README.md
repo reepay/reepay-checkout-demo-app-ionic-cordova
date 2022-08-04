@@ -42,7 +42,7 @@ Runs your app in the browser.
 $ ionic serve
 ```
 
-### ionic cordova build android
+### `ionic cordova build android`
 
 Builds the Android platform and runs on an Android device/emulator.
 
@@ -52,7 +52,7 @@ $ ionic cordova build android
 
 For removing the platform, you can use `ionic cordova platform remove android`.
 
-### ionic cordova build ios
+### `ionic cordova build ios`
 
 Builds the Android platform and runs on an iOS device/emulator.
 
@@ -90,6 +90,7 @@ $ ionic cordova plugin remove cordova-plugin-reepay-checkout
 8. Complete the purchase with a [test card](https://reference.reepay.com/api/#testing) or cancel the checkout.
 
 iOS build example:
+
 https://user-images.githubusercontent.com/108516218/182845243-5771af47-4823-4b94-bf83-819798085628.MP4
 
 
