@@ -28,7 +28,6 @@ npm install
 - [Usage](#usage)
   - [Reepay Private API Key](#reepay-private-api-key)
 - [Troubleshooting](#troubleshooting)
-  - [ReepayCheckout plugin issues](#reepaycheckout-plugin-issues)
   - [Android platform issues](#android-platform-issues)
   - [iOS platform issues](#ios-platform-issues)
 
@@ -93,5 +92,16 @@ iOS build example:
 
 https://user-images.githubusercontent.com/108516218/182845243-5771af47-4823-4b94-bf83-819798085628.MP4
 
+### Reepay Private API Key
 
+When you have generated a [Private API Key](https://app.reepay.com/#/rp/dev/api) from Reepay. Add the value to `REEPAY_PRIVATE_API_KEY` located at `./src/app/core/models/globals.enum.ts`.
 
+## Troubleshooting
+
+### Android platform issues
+
+It is recommended to use Android Studio to run your app after the Android platform has been generated with `ionic cordova build android`.
+
+### iOS platform issues
+
+It is recommended to use Xcode to run your app after the iOS platform has been generated the first time with `ionic cordova build ios` due to `Value for SWIFT_VERSION cannot be empty`.
