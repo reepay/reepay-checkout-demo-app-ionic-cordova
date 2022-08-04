@@ -82,7 +82,7 @@ $ ionic cordova plugin remove cordova-plugin-reepay-checkout
 1. Generate Private API Key from your Reepay account.
 2. Add the Private API Key to globals.enum.ts located at `./src/app/core/models/globals.enum.ts`.
 3. Build iOS or Android platform and run your app.
-4. Choose Checkout type in the menu.
+4. Choose Card Checkout in the menu.
 5. (Optional) Add an unique identifier for your Order and/or Customer handle.
 6. Generate a charge session.
 7. Create Reepay checkout in a webview.
@@ -105,3 +105,6 @@ It is recommended to use Android Studio to run your app after the Android platfo
 ### iOS platform issues
 
 It is recommended to use Xcode to run your app after the iOS platform has been generated the first time with `ionic cordova build ios` due to `Value for SWIFT_VERSION cannot be empty`.
+
+<img width="855" alt="swift version" src="https://user-images.githubusercontent.com/108516218/182848729-92475c5d-65d5-4069-adbe-8b88eceda62e.png">
+
