@@ -15,7 +15,7 @@ export class CardCheckoutPage implements OnInit, OnDestroy {
     private platform: Platform,
     private alertController: AlertController,
     private apiService: ApiService,
-    private checkoutService: CheckoutService,
+    public checkoutService: CheckoutService,
     private navController: NavController,
   ) { }
 
