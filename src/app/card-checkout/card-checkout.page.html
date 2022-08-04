@@ -1,6 +1,6 @@
 <app-header></app-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="false">
 
   <ion-header collapse="condense">
     <ion-toolbar>
@@ -20,12 +20,12 @@
       <header>Create a charge session</header>
       <ion-item>
         <ion-label position="stacked">Order Handle</ion-label>
-        <ion-input placeholder="<optional>" clearInput [(ngModel)]="orderHandle"></ion-input>
+        <ion-input placeholder="<optional>" clearInput [(ngModel)]="checkoutService.orderHandle"></ion-input>
       </ion-item>
       <br>
       <ion-item>
         <ion-label position="stacked">Customer Handle</ion-label>
-        <ion-input placeholder="<optional>" clearInput [(ngModel)]="customerHandle"></ion-input>
+        <ion-input placeholder="<optional>" clearInput [(ngModel)]="checkoutService.customerHandle"></ion-input>
       </ion-item>
       <br>
       <ion-button expand="block" (click)="generate()">Generate</ion-button>
@@ -36,15 +36,17 @@
     <section>
       <header>Generated charge session</header>
       <ion-item>
-        <ion-input placeholder="<generated session url" clearInput [(ngModel)]="sessionUrl"></ion-input>
+        <ion-input placeholder="<generated session url" clearInput [(ngModel)]="checkoutService.sessionUrl"></ion-input>
       </ion-item>
       <br>
       <ion-item>
-        <ion-input placeholder="<generated session id>" [disabled]="true" clearInput [(ngModel)]="sessionId">
+        <ion-input placeholder="<generated session id>" [disabled]="true" clearInput
+          [(ngModel)]="checkoutService.sessionId">
         </ion-input>
       </ion-item>
       <br>
-      <ion-button expand="block" (click)="create()" [disabled]="!sessionUrl">Create checkout</ion-button>
+      <ion-button expand="block" (click)="create()" [disabled]="!checkoutService.sessionUrl">Create checkout
+      </ion-button>
     </section>
   </div>
 

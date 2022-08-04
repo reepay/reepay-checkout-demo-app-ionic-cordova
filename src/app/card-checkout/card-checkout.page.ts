@@ -1,20 +1,13 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AlertController, NavController, Platform } from '@ionic/angular';
 import { ApiService } from '../core/services/api.service';
 import { CheckoutService } from '../core/services/checkout.service';
-
-
 @Component({
   selector: 'app-card-checkout',
   templateUrl: './card-checkout.page.html',
   styleUrls: ['./card-checkout.page.scss'],
 })
-export class CardCheckoutPage implements OnInit, AfterViewInit {
-
-  public orderHandle = '';
-  public customerHandle = '';
-  public sessionUrl = '';
-  public sessionId = '';
+export class CardCheckoutPage implements OnInit, OnDestroy {
 
   public isIosPlatform: boolean;
 
@@ -28,54 +21,52 @@ export class CardCheckoutPage implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.isIosPlatform = this.platform.is('ios');
+    if (this.isIosPlatform) { this.checkoutService.listen(); }
   }
 
-  ngAfterViewInit(): void {
+  ngOnDestroy(): void {
+    if (this.isIosPlatform) { this.checkoutService.unlisten(); }
   }
 
   reset() {
-    this.orderHandle = '';
-    this.customerHandle = '';
-    this.sessionUrl = '';
-    this.sessionId = '';
+    this.checkoutService.reset();
   }
 
   generate() {
-    if (this.customerHandle) {
-      this.apiService.getChargeSession(this.customerHandle, this.orderHandle)
+    if (this.checkoutService.customerHandle) {
+      this.apiService.getChargeSession(this.checkoutService.customerHandle, this.checkoutService.orderHandle)
         .then((session: any) => {
-          this.onAccept(session);
+          this.onSuccess(session);
         })
         .catch((rejected) => {
-          this.onCancel(rejected);
+          this.onError(rejected);
         });
       return;
     }
 
     this.apiService.getCustomerHandle().then((customerHandle: string) => {
-      this.apiService.getChargeSession(customerHandle, this.orderHandle)
+      this.apiService.getChargeSession(customerHandle, this.checkoutService.orderHandle)
         .then((session: any) => {
-          this.onAccept(session);
+          this.onSuccess(session);
         })
         .catch((rejected) => {
-          this.onCancel(rejected);
+          this.onError(rejected);
         });
     });
   }
 
   create() {
     if (this.isIosPlatform) {
-      this.checkoutService.open().then((result) => {
-        console.log(result);
-      });
+      this.checkoutService.registerCheckoutEvents(this.checkoutService.sessionUrl);
+      this.checkoutService.open().then((result) => { });
       return;
     }
 
-    const id = this.sessionId;
+    const id = this.checkoutService.sessionId;
     this.navController.navigateForward(['/android-card-checkout'], { queryParams: { id } });
   }
 
-  private async onAccept(response) {
+  private async onSuccess(response) {
     console.log(response);
     const alert = await this.alertController.create({
       header: 'Response',
@@ -84,10 +75,8 @@ export class CardCheckoutPage implements OnInit, AfterViewInit {
         {
           text: 'Create session',
           handler: () => {
-            this.sessionUrl = response.url;
-            this.sessionId = response.id;
-
-            if (this.isIosPlatform) { this.checkoutService.init(this.sessionUrl); }
+            this.checkoutService.sessionUrl = response.url;
+            this.checkoutService.sessionId = response.id;
           }
         },
       ],
@@ -95,7 +84,7 @@ export class CardCheckoutPage implements OnInit, AfterViewInit {
     await alert.present();
   }
 
-  private async onCancel(response) {
+  private async onError(response) {
     console.log(response);
     const alert = await this.alertController.create({
       header: 'Error',

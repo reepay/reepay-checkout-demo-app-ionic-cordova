@@ -1,3 +1,6 @@
+/**
+*   Example of native iOS WebView (for iOS15+)
+*/
 
 import Foundation
 import UIKit
@@ -34,7 +37,7 @@ class CheckoutViewController: UIViewController {
                 // print(html)
             }
         })
-        
+
         // observers
         webView.addObserver(self, forKeyPath: "URL", options: .new, context: nil)
 
@@ -47,13 +50,15 @@ class CheckoutViewController: UIViewController {
             let urlNSURL = key as! NSURL
             let urlNSSTRING = urlNSURL.absoluteString
             
-            if(urlNSSTRING!.contains("cancel")){
+            // Todo: listen to redirected url for accept/cancel payment event
+
+            if(urlNSSTRING!.contains("https://sandbox.reepay.com/api/httpstatus/200/cancel")){
                 print("Cancel URL: \(key)")
                 self.dismiss(animated: true)
                 ReepayCheckout.nc.post(name: Notification.Name("sendCancelEvent"), object: nil)
             }
             
-            if(urlNSSTRING!.contains("accept")){
+            if(urlNSSTRING!.contains("https://sandbox.reepay.com/api/httpstatus/200/accept")){
                 print("Accept URL: \(key)")
                 self.dismiss(animated: true)
                 ReepayCheckout.nc.post(name: Notification.Name("sendAcceptEvent"), object: nil)
@@ -62,11 +67,18 @@ class CheckoutViewController: UIViewController {
         }
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        ReepayCheckout.nc.removeObserver(self, name: Notification.Name("sendCancelEvent"), object: nil)
+        ReepayCheckout.nc.removeObserver(self, name: Notification.Name("sendAcceptEvent"), object: nil)
+        webView.removeObserver(self, forKeyPath: "URL")
+    }
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         webView.frame = view.bounds
     }
-    
+
 }
 
 extension UIDevice {

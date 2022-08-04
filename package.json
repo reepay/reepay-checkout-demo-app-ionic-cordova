@@ -48,7 +48,6 @@
     "cordova-plugin-ionic-webview": "^5.0.0",
     "cordova-plugin-reepay-checkout": "file:plugins_src/ReepayCheckout",
     "cordova-plugin-splashscreen": "5.0.2",
-    "cordova-plugin-statusbar": "^2.4.2",
     "eslint": "^7.6.0",
     "eslint-plugin-import": "2.22.1",
     "eslint-plugin-jsdoc": "30.7.6",
@@ -68,7 +67,6 @@
   "description": "Reepay Checkout example in Ionic Cordova",
   "cordova": {
     "plugins": {
-      "cordova-plugin-statusbar": {},
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-ionic-webview": {},
@@ -76,8 +74,8 @@
       "cordova-plugin-reepay-checkout": {}
     },
     "platforms": [
-      "ios",
-      "android"
+      "android",
+      "ios"
     ]
   }
 }
