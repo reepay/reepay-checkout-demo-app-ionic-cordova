@@ -92,6 +92,10 @@ iOS build example:
 
 https://user-images.githubusercontent.com/108516218/182845243-5771af47-4823-4b94-bf83-819798085628.MP4
 
+iOS open MobilePay app from WebView example:
+
+https://user-images.githubusercontent.com/108516218/228459868-77d70487-3e61-466a-b13b-78fa31c605b6.MP4
+
 ### Reepay Private API Key
 
 When you have generated a [Private API Key](https://app.reepay.com/#/rp/dev/api) from Reepay. Add the value to `REEPAY_PRIVATE_API_KEY` located at `./src/app/core/models/globals.enum.ts`.
