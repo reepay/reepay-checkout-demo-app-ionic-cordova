@@ -23,8 +23,8 @@
     "@ionic/angular-server": "^7.5.1",
     "@ionic/cordova-builders": "^7.0.0",
     "@ionic/core": "^7.5.1",
-    "cordova-android": "10.1.2",
-    "cordova-ios": "6.2.0",
+    "cordova-android": "12.0.1",
+    "cordova-ios": "7.0.1",
     "rxjs": "^7.5.0",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"
@@ -76,8 +76,8 @@
       "cordova-plugin-reepay-checkout": {}
     },
     "platforms": [
-      "android",
-      "ios"
+      "ios",
+      "android"
     ]
   }
 }

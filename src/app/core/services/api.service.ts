@@ -82,7 +82,7 @@ export class ApiService {
    */
   private generateOrderHandle(): string {
     const currentTime = new Date().getTime().toString();
-    return `order-cordova-${currentTime}`;
+    return `order_ionic_${currentTime}`;
   };
 
 }
