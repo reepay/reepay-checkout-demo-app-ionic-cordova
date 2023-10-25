@@ -34,7 +34,7 @@ class CheckoutViewController: UIViewController {
                     return
                 }
                 print("JS evaluated")
-                // print(html)
+                // print(html) // prints html content of reepay checkout
             }
         })
 
