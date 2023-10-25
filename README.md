@@ -1,6 +1,6 @@
 # Reepay Checkout - Ionic Cordova Example
 
-This is an example of Reepay Checkout using [Ionic v7.5.1](https://ionicframework.com/docs/cli) & [Cordova v12.0.0](https://cordova.apache.org/#getstarted) & [Angular v15.2.10](https://angular.io/cli/update).
+This is an example of Reepay Checkout using [Ionic v7.5.1](https://ionicframework.com/docs/cli) & [Cordova v12.0.0](https://cordova.apache.org/#getstarted) & [Angular v16.2.10](https://angular.io/cli/update).
 
 ## Setup
 
