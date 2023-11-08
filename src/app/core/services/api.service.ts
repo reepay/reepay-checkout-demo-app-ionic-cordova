@@ -4,25 +4,25 @@ import { Injectable } from '@angular/core';
 import { GLOBALS } from '../models/globals.enum';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ApiService {
-
-  constructor(
-    private http: HttpClient,
-  ) { }
+  constructor(private http: HttpClient) {}
 
   getCustomerHandle(): Promise<any> {
-    const headers = new HttpHeaders({ Authorization: 'Basic ' + this.getApiKeyBase64() });
+    const headers = new HttpHeaders({
+      Authorization: 'Basic ' + this.getApiKeyBase64(),
+    });
     const body = { generate_handle: true };
     return new Promise((resolve, reject) => {
-      this.http.post<any>(GLOBALS.REEPAY_API_CUSTOMER_URL, body, { headers })
+      this.http
+        .post<any>(GLOBALS.REEPAY_API_CUSTOMER_URL, body, { headers })
         .toPromise()
         .catch((err) => {
           console.log(err);
           reject(err);
         })
-        .then(response => {
+        .then((response) => {
           // console.log(response);
           resolve(response.handle);
         });
@@ -30,14 +30,19 @@ export class ApiService {
   }
 
   getChargeSession(customerHandle: string, orderHandle: string): Promise<any> {
-    if (!orderHandle) { orderHandle = this.generateOrderHandle(); }
-    const headers = new HttpHeaders({ Authorization: 'Basic ' + this.getApiKeyBase64() });
+    if (!orderHandle) {
+      orderHandle = this.generateOrderHandle();
+    }
+    const headers = new HttpHeaders({
+      Authorization: 'Basic ' + this.getApiKeyBase64(),
+    });
     const body = {
       order: {
         handle: orderHandle,
         customer: {
           handle: customerHandle,
         },
+        // currency: 'DKK',
         order_lines: [
           {
             ordertext: 'This Product',
@@ -51,19 +56,21 @@ export class ApiService {
           },
         ],
       },
+      // payment_methods: ['card'],
       accept_url:
         'https://sandbox.reepay.com/api/httpstatus/200/accept/' + orderHandle,
       cancel_url:
         'https://sandbox.reepay.com/api/httpstatus/200/cancel/' + orderHandle,
     };
     return new Promise((resolve, reject) => {
-      this.http.post<any>(GLOBALS.REEPAY_CHECKOUT_API_SESSION_URL, body, { headers })
+      this.http
+        .post<any>(GLOBALS.REEPAY_CHECKOUT_API_SESSION_URL, body, { headers })
         .toPromise()
         .catch((err) => {
           console.log(err);
           reject(err);
         })
-        .then(response => {
+        .then((response) => {
           // console.log(response);
           resolve({
             url: response.url,
@@ -73,7 +80,9 @@ export class ApiService {
     });
   }
 
-  private getApiKeyBase64(): string { return Buffer.from(GLOBALS.REEPAY_PRIVATE_API_KEY).toString('base64'); }
+  private getApiKeyBase64(): string {
+    return Buffer.from(GLOBALS.REEPAY_PRIVATE_API_KEY).toString('base64');
+  }
 
   /**
    * Generate example of Order Handle
@@ -83,6 +92,5 @@ export class ApiService {
   private generateOrderHandle(): string {
     const currentTime = new Date().getTime().toString();
     return `order_ionic_${currentTime}`;
-  };
-
+  }
 }

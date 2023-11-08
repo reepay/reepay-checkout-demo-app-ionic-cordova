@@ -2,7 +2,6 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NavController } from '@ionic/angular';
-import { CheckoutService } from '../core/services/checkout.service';
 
 // Reepay SDK from "https://checkout.reepay.com/checkout.js"
 declare let Reepay: any;
