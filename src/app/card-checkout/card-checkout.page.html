@@ -20,12 +20,12 @@
       <header>Create a charge session</header>
       <ion-item>
         <ion-label position="stacked">Order Handle</ion-label>
-        <ion-input placeholder="<optional>" clearInput [(ngModel)]="checkoutService.orderHandle"></ion-input>
+        <ion-input placeholder="<optional new order handle>" clearInput [(ngModel)]="checkoutService.orderHandle"></ion-input>
       </ion-item>
       <br>
       <ion-item>
         <ion-label position="stacked">Customer Handle</ion-label>
-        <ion-input placeholder="<optional>" clearInput [(ngModel)]="checkoutService.customerHandle"></ion-input>
+        <ion-input placeholder="<optional existing customer handle>" clearInput [(ngModel)]="checkoutService.customerHandle"></ion-input>
       </ion-item>
       <br>
       <ion-button expand="block" (click)="generate()">Generate</ion-button>
@@ -36,11 +36,11 @@
     <section>
       <header>Generated charge session</header>
       <ion-item>
-        <ion-input placeholder="<generated session url" clearInput [(ngModel)]="checkoutService.sessionUrl"></ion-input>
+        <ion-input placeholder="<generated session url>" clearInput [(ngModel)]="checkoutService.sessionUrl"></ion-input>
       </ion-item>
       <br>
       <ion-item>
-        <ion-input placeholder="<generated session id>" [disabled]="true" clearInput
+        <ion-input placeholder="<generated session id>" clearInput
           [(ngModel)]="checkoutService.sessionId">
         </ion-input>
       </ion-item>

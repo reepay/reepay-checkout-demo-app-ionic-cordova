@@ -33,26 +33,13 @@ export class CardCheckoutPage implements OnInit, OnDestroy {
   }
 
   generate() {
-    if (this.checkoutService.customerHandle) {
-      this.apiService.getChargeSession(this.checkoutService.customerHandle, this.checkoutService.orderHandle)
-        .then((session: any) => {
-          this.onSuccess(session);
-        })
-        .catch((rejected) => {
-          this.onError(rejected);
-        });
-      return;
-    }
-
-    this.apiService.getCustomerHandle().then((customerHandle: string) => {
-      this.apiService.getChargeSession(customerHandle, this.checkoutService.orderHandle)
-        .then((session: any) => {
-          this.onSuccess(session);
-        })
-        .catch((rejected) => {
-          this.onError(rejected);
-        });
-    });
+    this.apiService.getChargeSession(this.checkoutService.customerHandle, this.checkoutService.orderHandle)
+      .then((session: any) => {
+        this.onSuccess(session);
+      })
+      .catch((rejected) => {
+        this.onError(rejected);
+      });
   }
 
   create() {
