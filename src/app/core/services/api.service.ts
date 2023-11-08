@@ -10,7 +10,7 @@ interface Payload {
   providedIn: 'root',
 })
 export class ApiService {
-  private readonly currentTime: string = new Date().getTime().toString();
+  private currentTime: string;
 
   constructor(private http: HttpClient) {}
 
@@ -35,6 +35,7 @@ export class ApiService {
   // }
 
   getChargeSession(customerHandle: string, orderHandle: string): Promise<any> {
+    this.currentTime = new Date().getTime().toString();
     if (!orderHandle) {
       orderHandle = this.generateOrderHandle();
     }

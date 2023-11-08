@@ -27,6 +27,7 @@ class CheckoutViewController: UIViewController {
     func getWebView() -> WKWebView {
         let url = URL(string: ReepayCheckout.checkoutUrl)
         webView.load(URLRequest(url: url!))
+        print("webView url: \(url!)")
         webView.customUserAgent = "iPhone \(UIDevice.current.modelName) - iOS \(UIDevice.current.systemVersion)"
         DispatchQueue.main.asyncAfter(deadline: .now()+5, execute: {
             self.webView.evaluateJavaScript("document.body.innerHTML") { result, error in
