@@ -3,9 +3,10 @@ import { AlertController, NavController, Platform } from '@ionic/angular';
 import { ApiService } from '../core/services/api.service';
 import { CheckoutService } from '../core/services/checkout.service';
 @Component({
-  selector: 'app-card-checkout',
-  templateUrl: './card-checkout.page.html',
-  styleUrls: ['./card-checkout.page.scss'],
+    selector: 'app-card-checkout',
+    templateUrl: './card-checkout.page.html',
+    styleUrls: ['./card-checkout.page.scss'],
+    standalone: false
 })
 export class CardCheckoutPage implements OnInit, OnDestroy {
 
