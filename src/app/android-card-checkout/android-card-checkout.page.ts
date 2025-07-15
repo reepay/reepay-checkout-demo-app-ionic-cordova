@@ -7,9 +7,10 @@ import { NavController } from '@ionic/angular';
 declare let Reepay: any;
 
 @Component({
-  selector: 'app-android-card-checkout',
-  templateUrl: './android-card-checkout.page.html',
-  styleUrls: ['./android-card-checkout.page.scss'],
+    selector: 'app-android-card-checkout',
+    templateUrl: './android-card-checkout.page.html',
+    styleUrls: ['./android-card-checkout.page.scss'],
+    standalone: false
 })
 export class AndroidCardCheckoutPage implements OnInit, AfterViewInit {
 
